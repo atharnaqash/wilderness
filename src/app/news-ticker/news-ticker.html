@@ -1,0 +1,48 @@
+<div class="news-ticker">
+
+  <div class="ticker-label">
+    🌲 News
+  </div>
+
+  <div class="ticker-window">
+
+    @if (loading()) {
+
+      <div class="ticker-loading">
+        Loading latest wilderness news...
+      </div>
+
+    } @else if (error()) {
+
+      <div class="ticker-loading">
+        {{ error() }}
+      </div>
+
+    } @else {
+
+      <div class="ticker-track">
+
+        @for (item of loopNews; track $index) {
+
+          <a
+            class="ticker-item"
+            [href]="item.link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ item.title }}
+          </a>
+
+          <span class="ticker-separator">
+            •
+          </span>
+
+        }
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

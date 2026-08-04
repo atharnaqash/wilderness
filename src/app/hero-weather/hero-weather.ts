@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './hero-weather.css',
 })
 export class HeroWeather {
+
+
   rainDrops = Array.from({ length: 280 });
   leaves = Array.from({ length: 18 });
 }

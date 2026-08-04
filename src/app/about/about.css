@@ -129,10 +129,11 @@
   justify-content: space-between;
 
   padding: 0 18px;
+  background: #a9b65f;
 
-  border: 1px solid rgba(169, 182, 95, 0.75);
+  border: 1px solid rgb(48 55 9 / 0.75);
 
-  color: #bdc96e;
+  color: #282e03;
 
   font-size: 10px;
   font-weight: 700;
@@ -146,7 +147,7 @@
 }
 
 .about-button:hover {
-  background: #a9b65f;
+  background: #596515;
   color: #071512;
 
   transform: translateY(-2px);

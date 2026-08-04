@@ -11,29 +11,34 @@
   overflow: hidden;
 
   background: #071512;
+
+  isolation: isolate;
 }
 
 
-/* VIDEO */
+/* =========================
+   VIDEO
+   ========================= */
 
 .hero-video {
   position: absolute;
-
-  top: 50%;
-  left: 50%;
+  inset: 0;
 
   width: 100%;
   height: 100%;
 
-  transform: translate(-50%, -50%);
-
   object-fit: cover;
+  object-position: center;
+
+  display: block;
 
   z-index: 0;
 }
 
 
-/* OVERLAY */
+/* =========================
+   OVERLAY
+   ========================= */
 
 .hero-overlay {
   position: absolute;
@@ -56,11 +61,13 @@
 }
 
 
-/* MAIN CONTENT */
+/* =========================
+   MAIN CONTENT
+   ========================= */
 
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 4;
 
   width: min(1000px, 92%);
 
@@ -76,7 +83,9 @@
 }
 
 
-/* LOGO */
+/* =========================
+   LOGO
+   ========================= */
 
 .hero-logo {
   width: 400px;
@@ -91,7 +100,9 @@
 }
 
 
-/* TAGLINE */
+/* =========================
+   TAGLINE
+   ========================= */
 
 .hero-tagline {
   width: min(620px, 90%);
@@ -126,7 +137,9 @@
 }
 
 
-/* MAIN TITLE */
+/* =========================
+   MAIN TITLE
+   ========================= */
 
 .hero-title {
   margin: 0;
@@ -171,7 +184,9 @@
 }
 
 
-/* BRUSH-LIKE LINE */
+/* =========================
+   ACCENT LINE
+   ========================= */
 
 .hero-accent {
   width: min(470px, 70%);
@@ -187,7 +202,9 @@
 }
 
 
-/* FEATURES */
+/* =========================
+   FEATURES
+   ========================= */
 
 .hero-features {
   display: flex;
@@ -242,12 +259,14 @@
 }
 
 
-/* SCROLL */
+/* =========================
+   SCROLL INDICATOR
+   ========================= */
 
 .scroll-down {
   position: absolute;
 
-  z-index: 3;
+  z-index: 5;
 
   bottom: 20px;
   left: 50%;
@@ -339,24 +358,58 @@
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+   ========================= */
 
 @media (max-width: 700px) {
 
+  .hero {
+    min-height: 100svh;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px 16px 20px;
+
+    box-sizing: border-box;
+  }
+
   .hero-content {
-    padding-bottom: 60px;
+    position: relative;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 0 0 25px;
+
+    box-sizing: border-box;
+
+    transform: none;
   }
 
   .hero-logo {
-    width: 220px;
+    width: 190px;
+    max-width: 55vw;
+
+    margin: 0 auto 25px;
   }
 
   .hero-tagline {
+    width: 90%;
+
     gap: 10px;
+
+    margin-bottom: 12px;
   }
 
   .hero-tagline p {
     font-size: 8px;
+
     letter-spacing: 2px;
   }
 
@@ -365,7 +418,16 @@
   }
 
   .hero-title small {
+    margin-top: 8px;
+
     font-size: 40px;
+  }
+
+  .hero-accent {
+    width: 72%;
+    height: 6px;
+
+    margin-top: 12px;
   }
 
   .hero-features {
@@ -373,7 +435,13 @@
 
     justify-content: center;
 
+    margin-top: 25px;
+
+    padding-top: 18px;
+
     gap: 0;
+
+    transform: scale(0.85);
   }
 
   .feature {
@@ -383,76 +451,51 @@
   }
 
   .feature-svg {
-    font-size: 20px;
+    width: 26px;
+    height: 26px;
   }
 
   .feature span {
     font-size: 7px;
+
     letter-spacing: 1px;
+  }
+
+  .scroll-down {
+    display: none;
   }
 }
 
-@media (max-width: 700px) {
+
+/* =========================
+   VERY SMALL MOBILE
+   ========================= */
+
+@media (max-width: 420px) {
 
   .hero {
-    min-height: 100svh;
-    height: auto;
-
-    display: block;
-
-    padding: 25px 18px 50px;
-
-    box-sizing: border-box;
-  }
-
-  .hero-video {
-    position: absolute;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-  }
-
-  .hero-content {
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    padding-top: 10px;
-
-    box-sizing: border-box;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
   .hero-logo {
-    width: 190px;
-    max-width: 55vw;
-
-    margin: 0 auto 30px;
+    width: 175px;
   }
 
-  .hero-tagline {
-    font-size: 8px;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 12px;
+  .hero-title > span {
+    font-size: 56px;
   }
 
-  .hero h1 {
-    font-size: clamp(48px, 15vw, 68px);
+  .hero-title small {
+    font-size: 35px;
+  }
 
-    line-height: 0.88;
-
-    text-align: center;
+  .hero-tagline p {
+    font-size: 7px;
+    letter-spacing: 1.5px;
   }
 
   .hero-features {
-    margin-top: 25px;
-
-    transform: scale(0.85);
+    transform: scale(0.8);
   }
-
 }
