@@ -222,3 +222,65 @@
     font-size: 12px;
   }
 }
+
+
+@media (max-width: 700px) {
+
+  :host {
+    position: relative;
+
+    display: block;
+
+    width: calc(100% - 32px);
+
+    left: auto;
+    right: auto;
+    top: auto;
+
+    transform: none;
+
+    margin: 28px auto 0;
+  }
+
+  .about-card {
+    padding: 24px 22px;
+
+    border-left-width: 2px;
+  }
+
+  .about-label {
+    margin-bottom: 14px;
+
+    font-size: 8px;
+    letter-spacing: 3px;
+  }
+
+  .about-card h2 {
+    font-size: 30px;
+  }
+
+  .about-divider {
+    margin: 18px 0;
+
+    width: 40px;
+  }
+
+  .about-lead {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .about-secondary {
+    display: none;
+  }
+
+  .about-button {
+    margin-top: 18px;
+
+    min-height: 44px;
+  }
+
+  app-trail-conditions {
+    display: none;
+  }
+}

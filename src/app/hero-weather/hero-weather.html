@@ -1,0 +1,23 @@
+<div class="weather">
+
+  <div class="storm-shade"></div>
+
+  <div class="fog fog-back"></div>
+  <div class="fog fog-middle"></div>
+  <div class="fog fog-front"></div>
+
+  <div class="rain">
+    @for (drop of rainDrops; track $index) {
+      <i></i>
+    }
+  </div>
+
+  <div class="leaves">
+    @for (leaf of leaves; track $index) {
+      <span>🍂</span>
+    }
+  </div>
+
+  <div class="lightning-flash"></div>
+
+</div>

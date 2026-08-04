@@ -1,0 +1,721 @@
+:host {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  z-index: 3;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+
+.weather {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+
+/* =========================================
+   STORM DARKENING
+   ========================================= */
+
+.storm-shade {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(10, 18, 22, 0.05),
+      rgba(3, 12, 13, 0.45)
+    );
+
+  opacity: 0;
+
+  animation: stormShade 28s ease-in-out infinite;
+}
+
+
+@keyframes stormShade {
+
+  0%,
+  20% {
+    opacity: 0;
+  }
+
+  35% {
+    opacity: 0.2;
+  }
+
+  47%,
+  68% {
+    opacity: 0.72;
+  }
+
+  80% {
+    opacity: 0.25;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/* =========================================
+   FOG / MIST
+   ========================================= */
+
+.fog {
+  position: absolute;
+
+  left: -60%;
+
+  width: 170%;
+  height: 38%;
+
+  opacity: 0;
+
+  filter: blur(35px);
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(220, 228, 225, 0.23) 0%,
+      rgba(190, 205, 198, 0.15) 30%,
+      rgba(150, 170, 165, 0.06) 55%,
+      transparent 72%
+    );
+}
+
+
+.fog-back {
+  top: 5%;
+
+  animation:
+    fogBack 28s ease-in-out infinite;
+}
+
+
+.fog-middle {
+  top: 35%;
+
+  transform: scale(1.3);
+
+  animation:
+    fogMiddle 28s ease-in-out infinite;
+}
+
+
+.fog-front {
+  bottom: -8%;
+
+  transform: scale(1.6);
+
+  filter: blur(45px);
+
+  animation:
+    fogFront 28s ease-in-out infinite;
+}
+
+
+@keyframes fogBack {
+
+  0%,
+  14% {
+    opacity: 0;
+    transform: translateX(-10%);
+  }
+
+  27% {
+    opacity: 0.25;
+  }
+
+  50% {
+    opacity: 0.45;
+    transform: translateX(35%);
+  }
+
+  70% {
+    opacity: 0.28;
+  }
+
+  88%,
+  100% {
+    opacity: 0;
+    transform: translateX(70%);
+  }
+}
+
+
+@keyframes fogMiddle {
+
+  0%,
+  20% {
+    opacity: 0;
+    transform:
+      translateX(20%)
+      scale(1.3);
+  }
+
+  35% {
+    opacity: 0.18;
+  }
+
+  57% {
+    opacity: 0.38;
+
+    transform:
+      translateX(-20%)
+      scale(1.4);
+  }
+
+  78% {
+    opacity: 0.16;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translateX(-60%)
+      scale(1.3);
+  }
+}
+
+
+@keyframes fogFront {
+
+  0%,
+  25% {
+    opacity: 0;
+
+    transform:
+      translateX(-15%)
+      scale(1.6);
+  }
+
+  40% {
+    opacity: 0.2;
+  }
+
+  62% {
+    opacity: 0.35;
+
+    transform:
+      translateX(15%)
+      scale(1.7);
+  }
+
+  82% {
+    opacity: 0.12;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translateX(40%)
+      scale(1.6);
+  }
+}
+
+
+/* =========================================
+   RAIN
+   ========================================= */
+
+.rain {
+  position: absolute;
+
+  inset: -10% -5%;
+
+  opacity: 0;
+
+  overflow: hidden;
+
+  transform: rotate(7deg);
+
+  animation: rainVisibility 28s linear infinite;
+}
+
+
+.rain i {
+  position: absolute;
+
+  top: -8%;
+
+  width: 1px;
+  height: 18px;
+
+  opacity: 0.55;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(220, 235, 240, 0.75)
+    );
+
+  animation:
+    rainDrop 0.55s linear infinite;
+}
+
+
+/*
+140 drops.
+
+Using nth-child patterns gives them
+different x positions / speeds without
+writing 140 separate CSS rules.
+*/
+
+.rain i:nth-child(10n + 1) {
+  left: 3%;
+}
+
+.rain i:nth-child(10n + 2) {
+  left: 13%;
+}
+
+.rain i:nth-child(10n + 3) {
+  left: 23%;
+}
+
+.rain i:nth-child(10n + 4) {
+  left: 33%;
+}
+
+.rain i:nth-child(10n + 5) {
+  left: 43%;
+}
+
+.rain i:nth-child(10n + 6) {
+  left: 53%;
+}
+
+.rain i:nth-child(10n + 7) {
+  left: 63%;
+}
+
+.rain i:nth-child(10n + 8) {
+  left: 73%;
+}
+
+.rain i:nth-child(10n + 9) {
+  left: 83%;
+}
+
+.rain i:nth-child(10n) {
+  left: 93%;
+}
+
+
+/* make rows start at different heights */
+
+.rain i:nth-child(3n) {
+  top: -20%;
+
+  animation-delay: -0.15s;
+}
+
+.rain i:nth-child(4n) {
+  top: -35%;
+
+  animation-delay: -0.32s;
+}
+
+.rain i:nth-child(5n) {
+  animation-duration: 0.7s;
+
+  animation-delay: -0.45s;
+}
+
+.rain i:nth-child(7n) {
+  animation-duration: 0.48s;
+
+  opacity: 0.35;
+}
+
+
+@keyframes rainDrop {
+
+  from {
+    transform:
+      translate3d(0, -10vh, 0);
+  }
+
+  to {
+    transform:
+      translate3d(-70px, 125vh, 0);
+  }
+}
+
+
+@keyframes rainVisibility {
+
+  0%,
+  34% {
+    opacity: 0;
+  }
+
+  41% {
+    opacity: 0.45;
+  }
+
+  48%,
+  66% {
+    opacity: 1;
+  }
+
+  74% {
+    opacity: 0.3;
+  }
+
+  82%,
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/* =========================================
+   LIGHTNING
+   ========================================= */
+
+/*
+Don't draw a fake lightning bolt.
+
+Real distant lightning usually illuminates
+the clouds and landscape for a fraction
+of a second.
+*/
+
+.lightning-flash {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      110deg,
+      rgba(225, 235, 255, 0.04),
+      rgba(245, 248, 255, 0.55) 55%,
+      rgba(220, 230, 255, 0.08)
+    );
+
+  mix-blend-mode: screen;
+
+  opacity: 0;
+
+  animation:
+    lightningFlash 28s linear infinite;
+}
+
+
+@keyframes lightningFlash {
+
+  0%,
+  50% {
+    opacity: 0;
+  }
+
+
+  /* distant flash */
+
+  50.10% {
+    opacity: 0.12;
+  }
+
+  50.35% {
+    opacity: 0;
+  }
+
+
+  /* strong flash */
+
+  51.10% {
+    opacity: 0;
+  }
+
+  51.18% {
+    opacity: 0.75;
+  }
+
+  51.26% {
+    opacity: 0.08;
+  }
+
+  51.38% {
+    opacity: 0.52;
+  }
+
+  51.50% {
+    opacity: 0;
+  }
+
+
+  /* another storm flash */
+
+  61% {
+    opacity: 0;
+  }
+
+  61.08% {
+    opacity: 0.48;
+  }
+
+  61.18% {
+    opacity: 0;
+  }
+
+
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+  .rain i {
+    position: absolute;
+    top: -8%;
+
+    width: 1px;
+    height: 16px;
+
+    opacity: 0.65;
+  }
+
+  .rain i:nth-child(2n) {
+    margin-left: 4%;
+  }
+
+  .rain i:nth-child(3n) {
+    margin-left: 7%;
+  }
+
+  .rain i:nth-child(5n) {
+    margin-left: 2%;
+  }
+
+  .rain i:nth-child(7n) {
+    margin-left: 9%;
+  }
+
+  .rain i:nth-child(11n) {
+    margin-left: -3%;
+  }
+
+  .fog {
+    filter: blur(22px);
+  }
+
+  .fog-front {
+    filter: blur(28px);
+  }
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .storm-shade,
+  .fog,
+  .rain,
+  .rain i,
+  .lightning-flash {
+    animation: none;
+  }
+}
+
+/* =========================================
+   FLYING LEAVES
+   ========================================= */
+
+.leaves {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 8;
+}
+
+.leaves span {
+  position: absolute;
+
+  left: -80px;
+
+  font-size: 18px;
+
+  opacity: 0;
+
+  filter: blur(0.2px);
+
+  animation:
+    leafFly 14s linear infinite,
+    leafSpin 2.8s ease-in-out infinite;
+}
+
+
+/* Different vertical positions */
+
+.leaves span:nth-child(1)  { top: 12%; }
+.leaves span:nth-child(2)  { top: 28%; }
+.leaves span:nth-child(3)  { top: 67%; }
+.leaves span:nth-child(4)  { top: 45%; }
+.leaves span:nth-child(5)  { top: 82%; }
+.leaves span:nth-child(6)  { top: 18%; }
+.leaves span:nth-child(7)  { top: 56%; }
+.leaves span:nth-child(8)  { top: 34%; }
+.leaves span:nth-child(9)  { top: 73%; }
+.leaves span:nth-child(10) { top: 22%; }
+.leaves span:nth-child(11) { top: 61%; }
+.leaves span:nth-child(12) { top: 42%; }
+.leaves span:nth-child(13) { top: 88%; }
+.leaves span:nth-child(14) { top: 15%; }
+.leaves span:nth-child(15) { top: 52%; }
+.leaves span:nth-child(16) { top: 31%; }
+.leaves span:nth-child(17) { top: 76%; }
+.leaves span:nth-child(18) { top: 48%; }
+
+
+/* Different starting times */
+
+.leaves span:nth-child(2n) {
+  animation-delay: -3s, -0.7s;
+}
+
+.leaves span:nth-child(3n) {
+  animation-delay: -7s, -1.3s;
+}
+
+.leaves span:nth-child(5n) {
+  animation-delay: -11s, -2s;
+}
+
+
+/* Different sizes */
+
+.leaves span:nth-child(3n) {
+  font-size: 12px;
+}
+
+.leaves span:nth-child(4n) {
+  font-size: 24px;
+}
+
+.leaves span:nth-child(7n) {
+  font-size: 15px;
+}
+
+
+/* Different speeds */
+
+.leaves span:nth-child(4n) {
+  animation-duration: 18s, 3.4s;
+}
+
+.leaves span:nth-child(5n) {
+  animation-duration: 11s, 2.1s;
+}
+
+
+/* =========================================
+   FLY ACROSS SCREEN
+   ========================================= */
+
+@keyframes leafFly {
+
+  0% {
+    left: -8%;
+
+    transform: translateY(0);
+
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 0.75;
+  }
+
+  20% {
+    transform: translateY(45px);
+  }
+
+  40% {
+    transform: translateY(-30px);
+  }
+
+  60% {
+    transform: translateY(70px);
+  }
+
+  80% {
+    transform: translateY(-15px);
+  }
+
+  94% {
+    opacity: 0.7;
+  }
+
+  100% {
+    left: 108%;
+
+    transform: translateY(55px);
+
+    opacity: 0;
+  }
+}
+
+
+/* =========================================
+   TUMBLING / ROTATION
+   ========================================= */
+
+@keyframes leafSpin {
+
+  0% {
+    rotate: 0deg;
+  }
+
+  25% {
+    rotate: 100deg;
+  }
+
+  50% {
+    rotate: 190deg;
+  }
+
+  75% {
+    rotate: 280deg;
+  }
+
+  100% {
+    rotate: 360deg;
+  }
+}
