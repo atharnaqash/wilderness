@@ -121,12 +121,6 @@
 }
 
 
-/* Pause when user hovers */
-
-.gallery-track:hover {
-  animation-play-state: paused;
-}
-
 
 /* =========================
    IMAGE CARD
