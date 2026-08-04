@@ -1,0 +1,206 @@
+:host {
+  position: absolute;
+
+  right: 6%;
+  top: 52%;
+
+  transform: translateY(-50%);
+
+  z-index: 5;
+
+  width: 270px;
+}
+
+.conditions {
+  padding: 30px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(6, 27, 22, 0.82),
+      rgba(4, 20, 17, 0.65)
+    );
+
+  border-right: 2px solid #a9b65f;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.28);
+
+  color: #f4f1ea;
+}
+
+
+/* HEADING */
+
+.conditions-heading {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  color: #a9b65f;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 3px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+
+  background: #a9b65f;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 10px rgba(169, 182, 95, 0.8);
+}
+
+
+/* CLOCK */
+
+.time {
+  margin-top: 22px;
+
+  font-family: 'Playfair Display', serif;
+
+  font-size: 48px;
+  line-height: 1;
+
+  color: #f4f1ea;
+}
+
+.date {
+  margin-top: 8px;
+
+  color: rgba(255, 255, 255, 0.55);
+
+  font-size: 11px;
+
+  letter-spacing: 1px;
+}
+
+
+/* DIVIDER */
+
+.divider {
+  height: 1px;
+
+  margin: 24px 0;
+
+  background:
+    linear-gradient(
+      to right,
+      #a9b65f,
+      rgba(169, 182, 95, 0)
+    );
+}
+
+
+/* WEATHER */
+
+.weather {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+}
+
+.weather-icon {
+  width: 43px;
+}
+
+.weather-icon svg {
+  width: 100%;
+
+  fill: none;
+
+  stroke: #a9b65f;
+  stroke-width: 2;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.weather-info {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.weather-info strong {
+  font-size: 30px;
+  font-weight: 500;
+
+  color: #f4f1ea;
+}
+
+.weather-info div {
+  display: flex;
+  flex-direction: column;
+}
+
+.weather-info span {
+  font-size: 11px;
+
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.weather-info small {
+  margin-top: 4px;
+
+  font-size: 9px;
+
+  color: rgba(255, 255, 255, 0.45);
+}
+
+
+/* NOTE */
+
+.weather-note {
+  margin-top: 24px;
+
+  padding-top: 15px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  color: #a9b65f;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1200px) {
+
+  :host {
+    right: 3%;
+    width: 230px;
+  }
+
+  .conditions {
+    padding: 24px;
+  }
+
+  .time {
+    font-size: 40px;
+  }
+}
+
+
+@media (max-width: 950px) {
+
+  :host {
+    display: none;
+  }
+}

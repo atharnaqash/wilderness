@@ -1,0 +1,59 @@
+<aside class="conditions">
+
+  <div class="conditions-heading">
+    <span class="dot"></span>
+    <span>TRAIL CONDITIONS</span>
+  </div>
+
+  <div class="time">
+    {{ currentTime () | date:'HH:mm:ss' }}
+  </div>
+
+  <div class="date">
+    {{ currentTime () | date:'EEEE, dd MMMM' }}
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="weather">
+
+    <div class="weather-icon">
+      <svg viewBox="0 0 64 64">
+        <circle cx="25" cy="25" r="10"></circle>
+
+        <path d="M25 5V11"></path>
+        <path d="M25 39V45"></path>
+        <path d="M5 25H11"></path>
+        <path d="M39 25H45"></path>
+
+        <path d="M11 11L15 15"></path>
+        <path d="M35 35L39 39"></path>
+
+        <path d="M39 11L35 15"></path>
+
+        <path
+          d="M21 48
+             C21 41 27 36 34 36
+             C39 36 43 39 45 43
+             C52 43 56 47 56 52
+             H21"
+        ></path>
+      </svg>
+    </div>
+
+    <div class="weather-info">
+      <strong>18°</strong>
+
+      <div>
+        <span>Clear skies</span>
+        <small>Göttingen, Germany</small>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="weather-note">
+    GOOD DAY TO GET OUTSIDE
+  </div>
+
+</aside>
