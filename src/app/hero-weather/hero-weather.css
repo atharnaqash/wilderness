@@ -105,8 +105,7 @@
 .fog-back {
   top: 5%;
 
-  animation:
-    fogBack 28s ease-in-out infinite;
+  animation: fogBack 28s ease-in-out infinite;
 }
 
 
@@ -115,8 +114,7 @@
 
   transform: scale(1.3);
 
-  animation:
-    fogMiddle 28s ease-in-out infinite;
+  animation: fogMiddle 28s ease-in-out infinite;
 }
 
 
@@ -127,8 +125,7 @@
 
   filter: blur(45px);
 
-  animation:
-    fogFront 28s ease-in-out infinite;
+  animation: fogFront 28s ease-in-out infinite;
 }
 
 
@@ -166,6 +163,7 @@
   0%,
   20% {
     opacity: 0;
+
     transform:
       translateX(20%)
       scale(1.3);
@@ -235,7 +233,7 @@
 
 
 /* =========================================
-   RAIN
+   CONTINUOUS RAIN
    ========================================= */
 
 .rain {
@@ -243,13 +241,15 @@
 
   inset: -10% -5%;
 
-  opacity: 0;
+  opacity: 0.82;
 
   overflow: hidden;
 
   transform: rotate(7deg);
 
-  animation: rainVisibility 28s linear infinite;
+  pointer-events: none;
+
+  z-index: 6;
 }
 
 
@@ -259,29 +259,22 @@
   top: -8%;
 
   width: 1px;
-  height: 18px;
+  height: 16px;
 
-  opacity: 0.55;
+  opacity: 0.48;
 
   background:
     linear-gradient(
       to bottom,
       transparent,
-      rgba(220, 235, 240, 0.75)
+      rgba(220, 235, 240, 0.72)
     );
 
-  animation:
-    rainDrop 0.55s linear infinite;
+  animation: rainDrop 0.7s linear infinite;
 }
 
 
-/*
-140 drops.
-
-Using nth-child patterns gives them
-different x positions / speeds without
-writing 140 separate CSS rules.
-*/
+/* Horizontal distribution */
 
 .rain i:nth-child(10n + 1) {
   left: 3%;
@@ -324,30 +317,65 @@ writing 140 separate CSS rules.
 }
 
 
-/* make rows start at different heights */
+/* Extra horizontal variation */
+
+.rain i:nth-child(2n) {
+  margin-left: 4%;
+}
+
+.rain i:nth-child(3n) {
+  margin-left: 7%;
+}
+
+.rain i:nth-child(5n) {
+  margin-left: 2%;
+}
+
+.rain i:nth-child(7n) {
+  margin-left: 9%;
+}
+
+.rain i:nth-child(11n) {
+  margin-left: -3%;
+}
+
+
+/* Different start heights and speeds */
 
 .rain i:nth-child(3n) {
   top: -20%;
 
-  animation-delay: -0.15s;
+  animation-delay: -0.25s;
 }
 
 .rain i:nth-child(4n) {
   top: -35%;
 
-  animation-delay: -0.32s;
-}
-
-.rain i:nth-child(5n) {
-  animation-duration: 0.7s;
-
   animation-delay: -0.45s;
 }
 
+.rain i:nth-child(5n) {
+  animation-duration: 0.9s;
+
+  animation-delay: -0.65s;
+}
+
 .rain i:nth-child(7n) {
-  animation-duration: 0.48s;
+  animation-duration: 0.52s;
 
   opacity: 0.35;
+}
+
+.rain i:nth-child(8n) {
+  animation-duration: 1.05s;
+
+  opacity: 0.4;
+}
+
+.rain i:nth-child(13n) {
+  animation-duration: 0.62s;
+
+  opacity: 0.55;
 }
 
 
@@ -360,195 +388,96 @@ writing 140 separate CSS rules.
 
   to {
     transform:
-      translate3d(-70px, 125vh, 0);
-  }
-}
-
-
-@keyframes rainVisibility {
-
-  0%,
-  34% {
-    opacity: 0;
-  }
-
-  41% {
-    opacity: 0.45;
-  }
-
-  48%,
-  66% {
-    opacity: 1;
-  }
-
-  74% {
-    opacity: 0.3;
-  }
-
-  82%,
-  100% {
-    opacity: 0;
+      translate3d(-55px, 125vh, 0);
   }
 }
 
 
 /* =========================================
-   LIGHTNING
+   CONTINUOUS LIGHTNING CYCLE
    ========================================= */
-
-/*
-Don't draw a fake lightning bolt.
-
-Real distant lightning usually illuminates
-the clouds and landscape for a fraction
-of a second.
-*/
 
 .lightning-flash {
   position: absolute;
 
   inset: 0;
 
+  z-index: 5;
+
+  pointer-events: none;
+
+  opacity: 0;
+
   background:
     linear-gradient(
       110deg,
-      rgba(225, 235, 255, 0.04),
-      rgba(245, 248, 255, 0.55) 55%,
-      rgba(220, 230, 255, 0.08)
+      rgba(225, 235, 255, 0.02),
+      rgba(245, 248, 255, 0.52) 55%,
+      rgba(220, 230, 255, 0.04)
     );
 
   mix-blend-mode: screen;
 
-  opacity: 0;
-
-  animation:
-    lightningFlash 28s linear infinite;
+  animation: lightningFlash 8s linear infinite;
 }
 
 
 @keyframes lightningFlash {
 
   0%,
-  50% {
+  12% {
     opacity: 0;
   }
 
-
-  /* distant flash */
-
-  50.10% {
-    opacity: 0.12;
+  13% {
+    opacity: 0.25;
   }
 
-  50.35% {
+  13.5% {
     opacity: 0;
   }
 
-
-  /* strong flash */
-
-  51.10% {
-    opacity: 0;
+  15% {
+    opacity: 0.72;
   }
 
-  51.18% {
-    opacity: 0.75;
+  15.4% {
+    opacity: 0.05;
   }
 
-  51.26% {
-    opacity: 0.08;
-  }
-
-  51.38% {
-    opacity: 0.52;
-  }
-
-  51.50% {
-    opacity: 0;
-  }
-
-
-  /* another storm flash */
-
-  61% {
-    opacity: 0;
-  }
-
-  61.08% {
+  16% {
     opacity: 0.48;
   }
 
-  61.18% {
+  16.6% {
     opacity: 0;
   }
 
+  55% {
+    opacity: 0;
+  }
+
+  56% {
+    opacity: 0.35;
+  }
+
+  56.5% {
+    opacity: 0;
+  }
+
+  58% {
+    opacity: 0.62;
+  }
+
+  58.4% {
+    opacity: 0;
+  }
 
   100% {
     opacity: 0;
   }
 }
 
-
-/* =========================================
-   MOBILE
-   ========================================= */
-
-@media (max-width: 700px) {
-
-  .rain i {
-    position: absolute;
-    top: -8%;
-
-    width: 1px;
-    height: 16px;
-
-    opacity: 0.65;
-  }
-
-  .rain i:nth-child(2n) {
-    margin-left: 4%;
-  }
-
-  .rain i:nth-child(3n) {
-    margin-left: 7%;
-  }
-
-  .rain i:nth-child(5n) {
-    margin-left: 2%;
-  }
-
-  .rain i:nth-child(7n) {
-    margin-left: 9%;
-  }
-
-  .rain i:nth-child(11n) {
-    margin-left: -3%;
-  }
-
-  .fog {
-    filter: blur(22px);
-  }
-
-  .fog-front {
-    filter: blur(28px);
-  }
-}
-
-
-/* =========================================
-   ACCESSIBILITY
-   ========================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .storm-shade,
-  .fog,
-  .rain,
-  .rain i,
-  .lightning-flash {
-    animation: none;
-  }
-}
 
 /* =========================================
    FLYING LEAVES
@@ -564,6 +493,7 @@ of a second.
 
   z-index: 8;
 }
+
 
 .leaves span {
   position: absolute;
@@ -582,7 +512,7 @@ of a second.
 }
 
 
-/* Different vertical positions */
+/* Vertical positions */
 
 .leaves span:nth-child(1)  { top: 12%; }
 .leaves span:nth-child(2)  { top: 28%; }
@@ -604,7 +534,7 @@ of a second.
 .leaves span:nth-child(18) { top: 48%; }
 
 
-/* Different starting times */
+/* Different starting points */
 
 .leaves span:nth-child(2n) {
   animation-delay: -3s, -0.7s;
@@ -644,10 +574,6 @@ of a second.
   animation-duration: 11s, 2.1s;
 }
 
-
-/* =========================================
-   FLY ACROSS SCREEN
-   ========================================= */
 
 @keyframes leafFly {
 
@@ -693,10 +619,6 @@ of a second.
 }
 
 
-/* =========================================
-   TUMBLING / ROTATION
-   ========================================= */
-
 @keyframes leafSpin {
 
   0% {
@@ -717,5 +639,55 @@ of a second.
 
   100% {
     rotate: 360deg;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+  .rain {
+    opacity: 0.72;
+  }
+
+  .rain i {
+    height: 13px;
+
+    opacity: 0.42;
+  }
+
+  .fog {
+    filter: blur(22px);
+  }
+
+  .fog-front {
+    filter: blur(28px);
+  }
+
+  .leaves span {
+    font-size: 14px;
+  }
+
+  .leaves span:nth-child(4n) {
+    font-size: 19px;
+  }
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .storm-shade,
+  .fog,
+  .rain i,
+  .lightning-flash,
+  .leaves span {
+    animation: none;
   }
 }
